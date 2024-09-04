@@ -445,11 +445,14 @@
                                                       class="rounded profile-img img-fluid avatar-70">
                                               </div>
                                               <div class="p-3">
-                                                  <h5 class="mb-1">JoanDuo@property.com</h5>
-                                                  <p class="mb-0">Since 10 march, 2020</p>
-                                                  <div class="d-flex align-items-center justify-content-center mt-3">
-                                                      <a href="https://templates.iqonic.design/product/lite/posdash/html/app/user-profile.html" class="btn border mr-2">Profile</a>
-                                                      <a href="{% url 'signin' %}" class="btn border">Sign Out</a>
+                                                {% if user.is_authenticated %}
+                                                  <h5 class="mb-1">Welcome, {{ user.username }}</h5>
+                                                  <div class="d-flex align-items-center justify-content-center mt-3">                                                                                            
+                                                        <a href="{% url 'signin' %}">Sign out</a>
+                                                {% else %}
+                                                        <a href="{% url 'signin' %}">Sign in</a>
+                                                {% endif %}
+
                                                   </div>
                                               </div>
                                           </div>
@@ -489,10 +492,10 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card card-transparent card-block card-stretch card-height border-none">
-                    <div class="card-body p-0 mt-lg-2 mt-0">
+                    {% comment %} <div class="card-body p-0 mt-lg-2 mt-0">
                         <h3 class="mb-3">Hi Graham, Good Morning</h3>
                         <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
             <div class="col-lg-8">
